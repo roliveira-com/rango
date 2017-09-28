@@ -11,8 +11,6 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class RestaurantService {
 
-
-
   constructor(private http: Http){
 
   }
