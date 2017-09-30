@@ -21,4 +21,11 @@ export class RestaurantService {
       .catch(ErrorHandler.handleError)
   }
 
+  restaurantById(id: string):Observable<Restaurant>{
+    return this.http.get(`${RANGO_API}/restaurants/${id}`)
+      .map(response => response.json())
+      .catch(ErrorHandler.handleError)
+
+  }
+
 }
