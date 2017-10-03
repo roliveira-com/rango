@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import {Restaurant} from './restaurant.model';
+import {MenuItem} from '../../restaurante-detail/menu-item/menu-item.model';
 import {RANGO_API} from '../../app.api';
 import {Observable} from 'rxjs/Observable';
 import {ErrorHandler} from '../../app.error-handler'
@@ -26,6 +27,18 @@ export class RestaurantService {
       .map(response => response.json())
       .catch(ErrorHandler.handleError)
 
+  }
+
+  restaurantReview(id: string): Observable<any>{
+    return this.http.get(`${RANGO_API}/restaurants/${id}/reviews`)
+      .map(response => response.json())
+      .catch(ErrorHandler.handleError)
+  }
+
+  restaurantMenu(id: string): Observable<MenuItem[]> {
+    return this.http.get(`${RANGO_API}/restaurants/${id}/menu`)
+    .map(response => response.json())
+    .catch(ErrorHandler.handleError)    
   }
 
 }
