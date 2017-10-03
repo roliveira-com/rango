@@ -28,4 +28,10 @@ export class RestaurantService {
 
   }
 
+  restaurantReviews(id: string): Observable<any>{
+    return this.http.get(`${RANGO_API}/restaurants/${id}/reviews`)
+      .map(response => response.json())
+      .catch(ErrorHandler.handleError)
+  }
+
 }
