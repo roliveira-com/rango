@@ -1,9 +1,9 @@
 <div class="col-md-9 col-xs-12">
-  <app-menu-item *ngFor="let item of menu | async" [menuItem]="item" (add)="addMenuItem($event)"></app-menu-item>    
+  <app-menu-item *ngFor="let item of menu | async" [menuItem]="item" (add)="shoppingCart.addItem($event)"></app-menu-item>    
 </div>
 <div class="col-md-3 col-xs-12">
   <!--INICIO DO CARRINHO-->
-  <app-shopping-cart></app-shopping-cart>
+  <app-shopping-cart #shoppingCart></app-shopping-cart>
   <!-- FIM DO CARRINHO -->
 </div>
 
