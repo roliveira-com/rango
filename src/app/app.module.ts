@@ -11,6 +11,7 @@ import { AboutComponent } from './about/about.component';
 import { RestaurantesComponent } from './restaurantes/restaurantes.component';
 import { RestaurantComponent } from './restaurantes/restaurant/restaurant.component'
 import { RestaurantService } from './restaurantes/restaurant/restaurant.service';
+import { ShoppingCartService } from './restaurante-detail/shopping-cart/shopping-cart.service';
 import { RestauranteDetailComponent } from './restaurante-detail/restaurante-detail.component';
 import { MenuItemComponent } from './restaurante-detail/menu-item/menu-item.component';
 import { ShoppingCartComponent } from './restaurante-detail/shopping-cart/shopping-cart.component';
@@ -38,7 +39,7 @@ import { ReviewsComponent } from './restaurante-detail/reviews/reviews.component
     RouterModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [RestaurantService],
+  providers: [RestaurantService, ShoppingCartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
