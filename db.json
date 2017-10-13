@@ -370,5 +370,19 @@
       "restaurantId": "tasty-treats"
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "address": "Avenida Damasceno Vieira",
+      "number": "112",
+      "optional": "131",
+      "paymentOpt": "MON",
+      "orderItem": [
+        {
+          "quantity": 1,
+          "menuId": "capp"
+        }
+      ],
+      "id": 1
+    }
+  ]
 }
