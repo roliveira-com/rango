@@ -9,6 +9,8 @@ import {CartItem} from '../restaurante-detail/shopping-cart/cart-item.model';
 })
 export class OrderComponent implements OnInit {
 
+  delivery: number = 8;
+
   paymentOpts: RadioOption[] = [
     {label: 'Dinheiro', value: 'MON'},
     {label: 'Cartão Refeição', value: 'REF'},
@@ -19,6 +21,10 @@ export class OrderComponent implements OnInit {
   constructor(private orderService: OrderService) { }
 
   ngOnInit() {
+  }
+
+  itemsValue(){
+    return this.orderService.itemsValue();
   }
 
   getItems() {

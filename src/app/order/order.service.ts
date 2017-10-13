@@ -22,4 +22,9 @@ export class OrderService {
   remove(item: CartItem){
     this.cart.removeItem(item)
   }
+
+  itemsValue(){
+    return this.cart.total();
+  }
+
 }
