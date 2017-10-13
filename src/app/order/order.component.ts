@@ -21,8 +21,8 @@ export class OrderComponent implements OnInit {
   ngOnInit() {
   }
 
-  cartItems() {
-    this.orderService.cartItems()
+  getItems() {
+    return this.orderService.cartItems();
   }
 
   increaseQty(item: CartItem){

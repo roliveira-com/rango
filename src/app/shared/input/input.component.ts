@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ContentChild, AfterContentInit } from '@angular/core';
-import {NgModel} from '@angular/forms'
+import {NgModel} from '@angular/forms';
 
 @Component({
   selector: 'app-input-container',

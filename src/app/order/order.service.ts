@@ -1,8 +1,9 @@
-import {Injectable} from '@angular/core'
+import {Injectable} from '@angular/core';
 
 import {ShoppingCartService} from '../restaurante-detail/shopping-cart/shopping-cart.service';
 import {CartItem} from '../restaurante-detail/shopping-cart/cart-item.model';
 
+@Injectable()
 export class OrderService {
   constructor(private cart: ShoppingCartService ) {}
 
