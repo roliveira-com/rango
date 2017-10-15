@@ -3,32 +3,56 @@
 
   <section class="content">
     <section class="invoice">
-          <form #form="ngForm" novalidate>
+          <form [formGroup]="orderForm" novalidate>
             <div class="row">
               <div class="col-xs-12">
                 <h2 class="page-header">
                   <i class="fa fa-shopping-cart"></i> Finalize o seu pedido
                 </h2>
               </div>
-            </div>                
+            </div>    
+            
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="lead">Seus Dados:</div>
+              </div>
+              <div class="col-sm-6 col-xs-12">
+                <app-input-container label="Nome" errorMessage="Campo obrigatório e deve ter no mínimo 5 caracteres">
+                  <input type="text" class="form-control" formControlName="name" placeholder="Nome completo" minlength="5">
+                </app-input-container>
+              </div>  
+              
+              <div class="col-sm-3 col-xs-12">
+                <app-input-container label="Email" errorMessage="E-mail Inválido">
+                  <input type="text" class="form-control" formControlName="email" placeholder="Email" minlength="5">
+                </app-input-container>
+              </div>
 
-            <div class="row invoice-info">
+              <div class="col-sm-3 col-xs-12">
+                <app-input-container label="Confirmação de e-mail" errorMessage="Os dois e-mails devem ser iguais">
+                  <input type="text" class="form-control" formControlName="emailConfirmation" placeholder="Repita o E-mail" minlength="5">
+                </app-input-container>
+              </div>
+
+            </div>
+
+            <div class="row">
               <div class="col-xs-12">
                 <p class="lead">Endereço de Entrega:</p>
               </div>
               <div class="col-sm-6 col-xs-12">
                 <app-input-container label="Endereço" errorMessage="Campo obrigatório e deve ter no mínimo 5 caracteres">
-                  <input type="text" class="form-control" name="address" ngModel placeholder="Endereço" required minlength="5">
+                  <input type="text" class="form-control" formControlName="address" placeholder="Endereço" minlength="5">
                 </app-input-container>
               </div>
               <div class="col-sm-3 col-xs-6">
                 <app-input-container label="Número" errorMessage="Campo obrigatório e somente numeros">
-                  <input type="text" class="form-control" pattern="^[0-9]*$" name="number" ngModel placeholder="Número" required>
+                  <input type="text" class="form-control" pattern="^[0-9]*$" formControlName="number" placeholder="Número">
                 </app-input-container>
               </div>
               <div class="col-sm-3 col-xs-6">
-                <app-input-container label="Complemento" errorMessage=" ">
-                  <input type="text" class="form-control" name="optional" placeholder="Complemento" ngModel>
+                <app-input-container label="Complemento" errorMessage="Campo Obrogatório">
+                  <input type="text" class="form-control" formControlName="optionalAddress" placeholder="Complemento">
                 </app-input-container>
               </div>
             </div>
@@ -50,7 +74,7 @@
                 <p class="lead">Formas de Pagamento:</p>
 
                   <div class="form-group">
-                      <app-radio [options]="paymentOpts" name="paymentOpt" ngModel required></app-radio>
+                      <app-radio [options]="paymentOpts" formControlName="paymentOption"></app-radio>
                   </div>
 
               </div>
@@ -66,7 +90,7 @@
 
           <div class="row">
             <div class="col-xs-12">
-              <button (click)="checkout(form.value)" [disabled]="!form.valid || getItems().length === 0" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Concluir Pedido
+              <button (click)="checkout(orderForm.value)" [disabled]="!orderForm.valid || getItems().length === 0" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Concluir Pedido
               </button>
             </div>
           </div>
