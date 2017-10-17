@@ -13,8 +13,11 @@
             </div>    
             
             <div class="row">
-              <div class="col-xs-12">
+              <div class="col-xs-12 col-sm-9">
                 <div class="lead">Seus Dados:</div>
+              </div>
+              <div class="col-xs-12 col-sm-3">
+                <span class="help-block pull-right has-error-block" *ngIf="orderForm.hasError('emailsNotMatch')"><i class="fa fa-remove"></i> Os Emails não são iguais</span>
               </div>
               <div class="col-sm-6 col-xs-12">
                 <app-input-container label="Nome" errorMessage="Campo obrigatório e deve ter no mínimo 5 caracteres">
@@ -29,7 +32,7 @@
               </div>
 
               <div class="col-sm-3 col-xs-12">
-                <app-input-container label="Confirmação de e-mail" errorMessage="Os dois e-mails devem ser iguais">
+                <app-input-container label="Confirmação de e-mail" errorMessage="E-mail Inválido">
                   <input type="text" class="form-control" formControlName="emailConfirmation" placeholder="Repita o E-mail" minlength="5">
                 </app-input-container>
               </div>
