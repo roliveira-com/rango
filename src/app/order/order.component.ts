@@ -44,13 +44,15 @@ export class OrderComponent implements OnInit {
   }
 
   static equalsTo(group: AbstractControl): {[key:string]: boolean}{
-    const email = group.get('email');
-    const emailConfirmation = group.get('emailConfirmation');
+    const email = group.get('email')
+    const emailConfirmation = group.get('emailConfirmation')
     if(!email || !emailConfirmation){
       return undefined
     }
-    if(email !== emailConfirmation){
-      return {emailsNotMatch:false}
+    if(email.value !== emailConfirmation.value){
+      console.log(email.value);
+      console.log(emailConfirmation.value);
+      return {emailsNotMatch:true}
     }
     return undefined
   }
