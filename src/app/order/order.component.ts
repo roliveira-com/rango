@@ -30,11 +30,11 @@ export class OrderComponent implements OnInit {
 
   ngOnInit() {
     this.orderForm = this.formBuilder.group({
-      //sintaxe reduzida
-      //name: '', 
-      //sintaxe longa
+      // sintaxe reduzida
+      // name: '',
+      // sintaxe longa
       name: this.formBuilder.control('', [Validators.required, Validators.minLength(5)]),
-      email: this.formBuilder.control('',[Validators.required, Validators.pattern(this.emailPattern)]), //sintaxe longa
+      email: this.formBuilder.control('',[Validators.required, Validators.pattern(this.emailPattern)]), // sintaxe longa
       emailConfirmation: this.formBuilder.control('',[Validators.required, Validators.pattern(this.emailPattern)]),
       address: this.formBuilder.control('',[Validators.required, Validators.minLength(5)]),
       number: this.formBuilder.control('',[Validators.required, Validators.pattern(this.numberPattern)]),
@@ -52,7 +52,7 @@ export class OrderComponent implements OnInit {
     if(email.value !== emailConfirmation.value){
       console.log(email.value);
       console.log(emailConfirmation.value);
-      return {emailsNotMatch:true}
+      return {emailsNotMatch: true}
     }
     return undefined
   }
