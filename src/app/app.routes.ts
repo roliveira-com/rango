@@ -1,6 +1,5 @@
 import {Routes} from '@angular/router';
 import {HomeComponent} from './home/home.component';
-import {AboutComponent} from './about/about.component';
 import {RestaurantesComponent} from './restaurantes/restaurantes.component';
 import {RestauranteDetailComponent} from './restaurante-detail/restaurante-detail.component';
 import {MenuComponent} from './restaurante-detail/menu/menu.component';
@@ -9,8 +8,9 @@ import {OrderComponent} from './order/order.component';
 import {OrderSummaryComponent} from './order-summary/order-summary.component';
 
 export const routes: Routes = [
+  //usando caregamento tardio
   {path: '', component: HomeComponent},
-  {path: 'about', component: AboutComponent},
+  {path: 'about', loadChildren: './about/about.module#AboutModule'},
   {path: 'restaurantes', component: RestaurantesComponent},
   {path: 'restaurantes/:id', component: RestauranteDetailComponent, 
     children: [

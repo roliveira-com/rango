@@ -50,8 +50,6 @@ export class OrderComponent implements OnInit {
       return undefined
     }
     if(email.value !== emailConfirmation.value){
-      console.log(email.value);
-      console.log(emailConfirmation.value);
       return {emailsNotMatch:true}
     }
     return undefined
