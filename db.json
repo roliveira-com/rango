@@ -449,6 +449,30 @@
         }
       ],
       "id": 5
+    },
+    {
+      "name": "Rodrigo Oliveira",
+      "email": "ro@ro.com",
+      "emailConfirmation": "ro@ro.com",
+      "address": "Av Damasceno Vieira",
+      "number": "1202",
+      "optionalAddress": "131",
+      "paymentOption": "REF",
+      "orderItem": [
+        {
+          "quantity": 1,
+          "menuId": "cup-cake"
+        },
+        {
+          "quantity": 1,
+          "menuId": "straw"
+        },
+        {
+          "quantity": 2,
+          "menuId": "coke.png"
+        }
+      ],
+      "id": 6
     }
   ]
 }
