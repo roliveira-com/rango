@@ -19,7 +19,7 @@ import { ReviewsComponent } from './restaurante-detail/reviews/reviews.component
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
 
 import {SharedModule} from './shared/shared.module';
-import {ServiceModule} from './core/services.module'
+import {ServiceModule} from './core/services.module';
 
 
 @NgModule({
@@ -40,19 +40,19 @@ import {ServiceModule} from './core/services.module'
     BrowserModule,
     BrowserAnimationsModule,
     // Se optar em listar o SharedModule.forRoot()
-    // importaremos tambem a lista de providers/serviços desta 
+    // importaremos tambem a lista de providers/serviços desta
     // aplicacão que que estamos usando o ModuleWithProviders
     // no SharedModule. Deste modo não é necessário importar o
     // ServiceModule, já que já listamos estes providers po lá
     SharedModule.forRoot(),
     // ServiceModule,
     HttpModule,
-    //Usando um Preload em modulos que usam o LazyLoad, Isso fa com 
-    // que o modulo LazyLoad seja carregado depois no modulo principal e 
+    // Usando um Preload em modulos que usam o LazyLoad, Isso fa com
+    // que o modulo LazyLoad seja carregado depois no modulo principal e
     // não apenas quando solicitado
     RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})
   ],
-  //Aqui, apenas o Serviço de restaurantes está declarado no provider
+  // Aqui, apenas o Serviço de restaurantes está declarado no provider
   // os outros dois estão encapsulados no core modulo ServiceModule
   providers: [RestaurantService,{provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]

@@ -4,6 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 
 import {OrderService} from '../order/order.service';
 import {ShoppingCartService} from '../restaurante-detail/shopping-cart/shopping-cart.service';
+import {NotificationService} from './messages/notification.service'
 
 import {InputComponent} from './input/input.component'
 import {RadioComponent} from './radio/radio.component'
@@ -25,7 +26,7 @@ export class SharedModule{
   static forRoot(): ModuleWithProviders{
     return {
       ngModule: SharedModule,
-      providers: [OrderService,ShoppingCartService]
+      providers: [OrderService, ShoppingCartService, NotificationService]
     }
   }
 
