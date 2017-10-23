@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
@@ -37,6 +38,7 @@ import {ServiceModule} from './core/services.module'
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     // Se optar em listar o SharedModule.forRoot()
     // importaremos tambem a lista de providers/serviços desta 
     // aplicacão que que estamos usando o ModuleWithProviders
