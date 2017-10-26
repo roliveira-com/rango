@@ -1,1 +1,3 @@
-export const RANGO_API = 'http://localhost:3000'
+import {environment} from '../environments/environment';
+
+export const RANGO_API = environment.api;
