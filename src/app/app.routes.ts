@@ -5,6 +5,7 @@ import {RestauranteDetailComponent} from './restaurante-detail/restaurante-detai
 import {MenuComponent} from './restaurante-detail/menu/menu.component';
 import {ReviewsComponent} from './restaurante-detail/reviews/reviews.component';
 import {OrderSummaryComponent} from './order-summary/order-summary.component';
+import {NotFoundComponent} from './not-found/not-found.component'
 
 export const routes: Routes = [
   //usando caregamento tardio
@@ -18,5 +19,6 @@ export const routes: Routes = [
       {path: 'reviews', component: ReviewsComponent}
   ]},
   {path: 'order', loadChildren: './order/order.module#OrderModule'},
-  {path: 'order-summary', component: OrderSummaryComponent}
+  {path: 'order-summary', component: OrderSummaryComponent},
+  {path: '**', component: NotFoundComponent},
 ]

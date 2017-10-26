@@ -3,6 +3,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
+// Modificando estratégia de navegação usando Hash. Como o AngularJs
+import { LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 import { routes } from './app.routes'
 import { RestaurantService } from './restaurantes/restaurant/restaurant.service'
@@ -20,6 +22,7 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component';
 
 import {SharedModule} from './shared/shared.module';
 import {ServiceModule} from './core/services.module';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -34,7 +37,8 @@ import {ServiceModule} from './core/services.module';
     ShoppingCartComponent,
     MenuComponent,
     ReviewsComponent,
-    OrderSummaryComponent
+    OrderSummaryComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +58,7 @@ import {ServiceModule} from './core/services.module';
   ],
   // Aqui, apenas o Serviço de restaurantes está declarado no provider
   // os outros dois estão encapsulados no core modulo ServiceModule
-  providers: [RestaurantService,{provide: LOCALE_ID, useValue: 'pt-BR'}],
+  providers: [RestaurantService, {provide: LocationStrategy, useClass: HashLocationStrategy}, {provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
