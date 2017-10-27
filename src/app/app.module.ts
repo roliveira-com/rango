@@ -59,6 +59,10 @@ import { NotFoundComponent } from './not-found/not-found.component';
   // Aqui, apenas o Serviço de restaurantes está declarado no provider
   // os outros dois estão encapsulados no core modulo ServiceModule
   providers: [RestaurantService, {provide: LocationStrategy, useClass: HashLocationStrategy}, {provide: LOCALE_ID, useValue: 'pt-BR'}],
+  // o uso de {provide: LocationStrategy, useClass: HashLocationStrategy} faz com que o
+  // hash (#) seja adicionando na url. Ex. http://localhost/#/etc. Isso resolve problemas
+  // de rota em servidores onde não é possível configurar as regras espeíficas descritas em:
+  // https://angular.io/guide/deployment#routed-apps-must-fallback-to-indexhtml
   bootstrap: [AppComponent]
 })
 export class AppModule { }
