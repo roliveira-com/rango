@@ -473,6 +473,30 @@
         }
       ],
       "id": 6
+    },
+    {
+      "name": "Rodrigo Oliveira",
+      "email": "ro@ro.com",
+      "emailConfirmation": "ro@ro.com",
+      "address": "Av Damasceno Vieria",
+      "number": "1300",
+      "optionalAddress": "131",
+      "paymentOption": "REF",
+      "orderItem": [
+        {
+          "quantity": 1,
+          "menuId": "burger"
+        },
+        {
+          "quantity": 1,
+          "menuId": "coke.png"
+        },
+        {
+          "quantity": 2,
+          "menuId": "donut"
+        }
+      ],
+      "id": 7
     }
   ]
 }

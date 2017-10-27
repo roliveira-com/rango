@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { NgModule, LOCALE_ID } from '@angular/core';
-import { HttpModule } from '@angular/http';
+// O Módulo HttpClient Substitui o antigo módulo Http.
+// Além do nome deste método tambem muda o diretório onde ele se encontra
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 // Modificando estratégia de navegação usando Hash. Como o AngularJs
 import { LocationStrategy, HashLocationStrategy} from '@angular/common';
@@ -50,7 +52,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     // ServiceModule, já que já listamos estes providers po lá
     SharedModule.forRoot(),
     // ServiceModule,
-    HttpModule,
+    HttpClientModule,
     // Usando um Preload em modulos que usam o LazyLoad, Isso fa com
     // que o modulo LazyLoad seja carregado depois no modulo principal e
     // não apenas quando solicitado
