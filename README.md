@@ -1,6 +1,9 @@
 # Rango
 Estudando Angular 4 com typescipt e Angular CLI! 
 
+## Módulo Http
+Este branch ainda usa o antigo módulo `http` que foi substituido pelo módulo `httpclient` a partir da versão 4.3. Algumas funcionalidades não estarão disponíveis aqui.
+
 ## Angular 4 and Angular CLI
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.0.
 
