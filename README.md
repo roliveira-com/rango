@@ -12,7 +12,10 @@ Just run `npm install`
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. The local server use [json-server](https://github.com/roliveira-com/json-server) library to setup a local REST api. Run `json-server mock.json` at the rrot folder to start server.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. The local server use [json-server](https://github.com/roliveira-com/json-server) library to setup a local REST api backend. Run `node backend/dist/server` at the root folder to start server.
+
+### Backend server while developing
+While performing changes to the backend scripts, you can run `nodemon --watch backend backend/dist/server.js` and the server will reload automatically when  you save the changes. 
 
 ## Code scaffolding
 
@@ -30,7 +33,10 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ### Initializing the backend server (at app root folder)
 
-`json-server db.json`
+`node backend/dist/server`
+
+### Backend live-reload
+While performing changes to the backend scripts, you can run `nodemon --watch backend backend/dist/server.js` and the server will reload automatically when  you save the changes. 
 
 ## Goodies
 

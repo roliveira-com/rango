@@ -8,8 +8,8 @@ import { RouterModule, PreloadAllModules } from '@angular/router';
 // Modificando estratégia de navegação usando Hash. Como o AngularJs
 import { LocationStrategy, HashLocationStrategy} from '@angular/common';
 
-import { routes } from './app.routes'
-import { RestaurantService } from './restaurantes/restaurant/restaurant.service'
+import { routes } from './app.routes';
+import { RestaurantService } from './restaurantes/restaurant/restaurant.service';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
