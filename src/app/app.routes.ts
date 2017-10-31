@@ -5,12 +5,14 @@ import {RestauranteDetailComponent} from './restaurante-detail/restaurante-detai
 import {MenuComponent} from './restaurante-detail/menu/menu.component';
 import {ReviewsComponent} from './restaurante-detail/reviews/reviews.component';
 import {OrderSummaryComponent} from './order-summary/order-summary.component';
-import {NotFoundComponent} from './not-found/not-found.component'
+import {NotFoundComponent} from './not-found/not-found.component';
+import {LoginComponent} from './login/login.component'
 
 export const routes: Routes = [
   //usando caregamento tardio
   {path: '', component: HomeComponent},
   {path: 'about', loadChildren: './about/about.module#AboutModule'},
+  {path: 'login', component: LoginComponent},
   {path: 'restaurantes', component: RestaurantesComponent},
   {path: 'restaurantes/:id', component: RestauranteDetailComponent, 
     children: [

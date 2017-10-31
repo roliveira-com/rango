@@ -9,11 +9,12 @@ export class InputComponent implements OnInit, AfterContentInit {
   
   input: any
   
-  @Input() label: string
-  @Input() errorMessage: string
+  @Input() label: string;
+  @Input() errorMessage: string;
+  @Input() showTip: boolean = true;
 
-  @ContentChild(NgModel) model: NgModel
-  @ContentChild(FormControlName) control: FormControlName
+  @ContentChild(NgModel) model: NgModel;
+  @ContentChild(FormControlName) control: FormControlName;
 
   constructor() { }
 
