@@ -3,10 +3,11 @@ import {Injectable} from '@angular/core';
 // Por já trabalhar com o Content-Type json, não será
 // necessário importar Headers e RequestOptions no HttpClient
 //import {Http, Headers, RequestOptions} from '@angular/http';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient, HttpHeaders} from '@angular/common/http'
 
 import {ShoppingCartService} from '../restaurante-detail/shopping-cart/shopping-cart.service';
 import {CartItem} from '../restaurante-detail/shopping-cart/cart-item.model';
+import {LoginService} from '../login/login.service';
 import {Order, OrderItem} from './order.model';
 import {RANGO_API} from '../app.api';
 
@@ -15,7 +16,7 @@ import 'rxjs/add/operator/map'
 
 @Injectable()
 export class OrderService {
-  constructor(private cart: ShoppingCartService, private api: HttpClient ) {}
+  constructor(private cart: ShoppingCartService, private api: HttpClient, private loginService: LoginService ) {}
 
   cartItems(): CartItem[]{
     return this.cart.items
@@ -38,7 +39,11 @@ export class OrderService {
   }
 
   checkout(order: Order): Observable<string>{
-    return this.api.post<Order>(`${RANGO_API}/orders`, order)
+    let header = new HttpHeaders();
+    if(this.loginService.isLoggedIn()){
+      header = header.set('Authorization', `Bearer ${this.loginService.user.token}`)
+    }
+    return this.api.post<Order>(`${RANGO_API}/orders`, order, {headers: header})
       .map(order => order.id)
   }
 

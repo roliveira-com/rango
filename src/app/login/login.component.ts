@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import {NotificationService} from '../shared/messages/notification.service'
 import {LoginService} from './login.service';
 import {User} from './user.model';
 
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(private form: FormBuilder, private loginService: LoginService) { }
+  constructor(private form: FormBuilder, private loginService: LoginService, private notification: NotificationService) { }
 
   ngOnInit() {
 
@@ -25,7 +26,13 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    this.loginService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(user => console.log(user));
+    this.loginService.login(this.loginForm.value.email, this.loginForm.value.password)
+      .subscribe(
+        // callback de sucesso
+        user => this.notification.notify(`Bem Vindo, ${user.name}`),
+        // callback de erro
+        response => this.notification.notify(response.error.message)
+      );
   }
 
 }

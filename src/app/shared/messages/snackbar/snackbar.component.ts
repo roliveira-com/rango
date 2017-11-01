@@ -35,7 +35,8 @@ export class SnackbarComponent implements OnInit {
   constructor(private notifyService: NotificationService) { }
 
   ngOnInit() {
-    this.notifyService.notifier.do(message=>{
+    this.notifyService.notifier
+    .do(message=>{
       this.message = message;
       this.snackVisibility = 'visible';
     })
