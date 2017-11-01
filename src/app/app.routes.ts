@@ -7,11 +7,13 @@ import {ReviewsComponent} from './restaurante-detail/reviews/reviews.component';
 import {OrderSummaryComponent} from './order-summary/order-summary.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {LoginComponent} from './login/login.component'
+import {LoggedInGuard} from './login/loggedin.guard';
 
 export const routes: Routes = [
-  //usando caregamento tardio
+  // usando caregamento tardio
   {path: '', component: HomeComponent},
   {path: 'about', loadChildren: './about/about.module#AboutModule'},
+  {path: 'login/:to', component: LoginComponent},
   {path: 'login', component: LoginComponent},
   {path: 'restaurantes', component: RestaurantesComponent},
   {path: 'restaurantes/:id', component: RestauranteDetailComponent, 
@@ -20,7 +22,9 @@ export const routes: Routes = [
       {path: 'menu', component: MenuComponent},
       {path: 'reviews', component: ReviewsComponent}
   ]},
-  {path: 'order', loadChildren: './order/order.module#OrderModule'},
+  {path: 'order', loadChildren: './order/order.module#OrderModule',
+    canLoad: [LoggedInGuard]
+  },
   {path: 'order-summary', component: OrderSummaryComponent},
   {path: '**', component: NotFoundComponent},
 ]

@@ -1,3 +1,4 @@
+import {Router} from '@angular/router'
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
@@ -11,7 +12,7 @@ export class LoginService{
 
   user: User;
 
-  constructor(private api: HttpClient) {}
+  constructor(private api: HttpClient, private router: Router) {}
 
   isLoggedIn(): boolean{
     return this.user !== undefined;
@@ -22,5 +23,9 @@ export class LoginService{
                     // depois do post, associa o objeto de resposta a propriedade this.user
                    .do(user => this.user = user);
     
+  }
+
+  handleLogin(path?: string) {
+    this.router.navigate(['/login', path]);
   }
 }
