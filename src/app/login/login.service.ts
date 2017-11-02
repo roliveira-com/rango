@@ -26,6 +26,8 @@ export class LoginService{
   }
 
   handleLogin(path?: string) {
-    this.router.navigate(['/login', path]);
+    // a função nativa do JS btoa() encoda o path
+    // para uma apresentação mais amigável
+    this.router.navigate(['/login', btoa(path)]);
   }
 }

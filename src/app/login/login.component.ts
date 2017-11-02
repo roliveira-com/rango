@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
       email: this.form.control('', [Validators.required, Validators.email]),
       password: this.form.control('', [Validators.required])
     })
-    this.navigateTo = this.activatedRoute.snapshot.params['to'] || '/'
+    this.navigateTo = this.activatedRoute.snapshot.params['to'] || btoa('/')
   }
 
   login() {
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
         // callback de erro
         response => this.notification.notify(response.error.message),
         // callback para quando o subscribe terminar
-        () => this.router.navigate([this.navigateTo])
+        () => this.router.navigate([atob(this.navigateTo)])
       );
   }
 
