@@ -8,6 +8,7 @@ import {NotificationService} from './messages/notification.service';
 import {LoginService} from '../login/login.service';
 
 import {LoggedInGuard} from '../login/loggedin.guard';
+import {LeaveOrderGuard} from '../order/order.guard';
 
 import {InputComponent} from './input/input.component'
 import {RadioComponent} from './radio/radio.component'
@@ -29,7 +30,7 @@ export class SharedModule{
   static forRoot(): ModuleWithProviders{
     return {
       ngModule: SharedModule,
-      providers: [OrderService, ShoppingCartService, NotificationService, LoginService, LoggedInGuard]
+      providers: [OrderService, ShoppingCartService, NotificationService, LoginService, LoggedInGuard, LeaveOrderGuard]
     }
   }
 

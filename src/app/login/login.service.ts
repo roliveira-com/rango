@@ -33,7 +33,6 @@ export class LoginService{
     return this.api.post<User>(`${RANGO_API}/login`, {email: email, password: password})
                     // depois do post, associa o objeto de resposta a propriedade this.user
                    .do(user => this.user = user);
-    
   }
 
   logout(){

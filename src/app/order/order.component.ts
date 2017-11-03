@@ -16,6 +16,8 @@ export class OrderComponent implements OnInit {
 
   delivery: number = 8;
 
+  orderId: string;
+
   emailPattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
   numberPattern = /^[0-9]*$/
 
@@ -30,9 +32,9 @@ export class OrderComponent implements OnInit {
 
   ngOnInit() {
     this.orderForm = this.formBuilder.group({
-      //sintaxe reduzida
-      //name: '', 
-      //sintaxe longa
+      // sintaxe reduzida
+      // name: '',
+      // sintaxe longa
       name: this.formBuilder.control('', [Validators.required, Validators.minLength(5)]),
       email: this.formBuilder.control('',[Validators.required, Validators.pattern(this.emailPattern)]), //sintaxe longa
       emailConfirmation: this.formBuilder.control('',[Validators.required, Validators.pattern(this.emailPattern)]),
@@ -75,13 +77,28 @@ export class OrderComponent implements OnInit {
     this.orderService.remove(item)
   }
 
+  // usando a propriedade orderId, este método
+  // consegue identificar se o pedido foi completado
+  // e infroma-lo para o LeaveOrderGurad em order.guard.ts
+  // por exemplo
+  isOrderCompleted(): boolean{
+    return this.orderId !== undefined;
+  }
+
   checkout(order: Order){
     order.orderItem = this.getItems().map((item: CartItem) => new OrderItem(item.quantity, item.menuItem.id));
-    this.orderService.checkout(order).subscribe((orderId: string) => {
-      this.router.navigate(['/order-summary'])
-      console.log(`Compra realizada com sucesso. Número do pedido: ${orderId}`);
-      this.orderService.clear();
-    })
+    this.orderService.checkout(order)
+      // O operador od aqui guarda o o numero do pedido
+      // Assim, o método isOrderCompleted() consegue checar se
+      // o usuário completou o pedido
+      .do((orderId: string) => {
+        this.orderId = orderId;
+      })
+      .subscribe((orderId: string) => {
+        this.router.navigate(['/order-summary'])
+        console.log(`Compra realizada com sucesso. Número do pedido: ${orderId}`);
+        this.orderService.clear();
+      })
   }
 
 }
