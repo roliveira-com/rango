@@ -26,6 +26,7 @@ import {SharedModule} from './shared/shared.module';
 import {ServiceModule} from './core/services.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
+import { UserDetailsComponent } from './header/user-details/user-details.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { LoginComponent } from './login/login.component';
     ReviewsComponent,
     OrderSummaryComponent,
     NotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
