@@ -4,6 +4,9 @@ Estudando Angular 4 com typescipt e Angular CLI!
 ## Usando o HttpClient
 Este branch encapsula o refactory para usar o Módulo HttpClient introduzido no Angular 4.3. Alterações foram necessárias no múdulo principal da aplicação (providers) e nas classes `RestaurantService`, `OrderService` e `ErrorHandler`.
 
+## Usando o HttpInterceptors
+Este branch encapsula o refactory para o envio dos header atraves do HttpInterceptors. Alterações foram necessaŕias na classe `OrderService` e adição da classe interceptor `AuthInterceptor` 
+
 ## Angular 4 and Angular CLI
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.0.
 

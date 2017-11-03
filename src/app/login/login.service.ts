@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
 import {Observable} from 'rxjs/Observable';
-//import 'rxjs/add/operator/do';
+// import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/filter';
 
 import {RANGO_API} from '../app.api';
