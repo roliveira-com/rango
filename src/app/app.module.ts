@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { NgModule, LOCALE_ID } from '@angular/core';
+import { NgModule, LOCALE_ID, ErrorHandler } from '@angular/core';
 // O Módulo HttpClient Substitui o antigo módulo Http.
 // Além do nome deste método tambem muda o diretório onde ele se encontra
 import { HttpClientModule } from '@angular/common/http';
@@ -21,6 +21,7 @@ import { ShoppingCartComponent } from './restaurante-detail/shopping-cart/shoppi
 import { MenuComponent } from './restaurante-detail/menu/menu.component';
 import { ReviewsComponent } from './restaurante-detail/reviews/reviews.component';
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
+import { ApplicationErrorHandler } from './app.error-handler'
 
 import {SharedModule} from './shared/shared.module';
 import {ServiceModule} from './core/services.module';
@@ -64,7 +65,12 @@ import { UserDetailsComponent } from './header/user-details/user-details.compone
   ],
   // Aqui, apenas o Serviço de restaurantes está declarado no provider
   // os outros dois estão encapsulados no core modulo ServiceModule
-  providers: [RestaurantService, {provide: LocationStrategy, useClass: HashLocationStrategy}, {provide: LOCALE_ID, useValue: 'pt-BR'}],
+  providers: [
+    RestaurantService, 
+    {provide: LocationStrategy, useClass: HashLocationStrategy}, 
+    {provide: LOCALE_ID, useValue: 'pt-BR'},
+    {provide: ErrorHandler, useClass: ApplicationErrorHandler}
+  ],
   // o uso de {provide: LocationStrategy, useClass: HashLocationStrategy} faz com que o
   // hash (#) seja adicionando na url. Ex. http://localhost/#/etc. Isso resolve problemas
   // de rota em servidores onde não é possível configurar as regras espeíficas descritas em:

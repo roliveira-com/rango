@@ -4,7 +4,6 @@ import {Restaurant} from './restaurant.model';
 import {MenuItem} from '../../restaurante-detail/menu-item/menu-item.model';
 import {RANGO_API} from '../../app.api';
 import {Observable} from 'rxjs/Observable';
-import {ErrorHandler} from '../../app.error-handler';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
