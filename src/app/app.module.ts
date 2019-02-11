@@ -6,7 +6,10 @@ import { NgModule, LOCALE_ID, ErrorHandler } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 // Modificando estratégia de navegação usando Hash. Como o AngularJs
-import { LocationStrategy, HashLocationStrategy} from '@angular/common';
+import { LocationStrategy, HashLocationStrategy, registerLocaleData} from '@angular/common';
+import  localePt from '@angular/common/locales/pt';
+
+registerLocaleData(localePt, 'pt');
 
 import { routes } from './app.routes';
 import { RestaurantService } from './restaurantes/restaurant/restaurant.service';
@@ -68,7 +71,7 @@ import { UserDetailsComponent } from './header/user-details/user-details.compone
   providers: [
     RestaurantService, 
     {provide: LocationStrategy, useClass: HashLocationStrategy}, 
-    {provide: LOCALE_ID, useValue: 'pt-BR'},
+    {provide: LOCALE_ID, useValue: 'pt'},
     {provide: ErrorHandler, useClass: ApplicationErrorHandler}
   ],
   // o uso de {provide: LocationStrategy, useClass: HashLocationStrategy} faz com que o
