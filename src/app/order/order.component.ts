@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {FormGroup, FormBuilder, Validators, AbstractControl} from '@angular/forms';
+import {FormGroup, FormBuilder, FormControl, Validators, AbstractControl} from '@angular/forms';
 import {RadioOption} from '../shared/radio/radio-option.model';
 import {OrderService} from './order.service';
 import {CartItem} from '../restaurante-detail/shopping-cart/cart-item.model';
@@ -35,7 +35,17 @@ export class OrderComponent implements OnInit {
       // sintaxe reduzida
       // name: '',
       // sintaxe longa
-      name: this.formBuilder.control('', [Validators.required, Validators.minLength(5)]),
+      // name: this.formBuilder.control('', [Validators.required, Validators.minLength(5)]),
+      /**
+       * @V6 Feature
+       * configurando campo para aplicar validação somente no evento onBlur.
+       * É possível plaicar no form todo com 
+       * 
+       */
+      name: new FormControl('',{
+        validators: [Validators.required, Validators.minLength(5)],
+        updateOn: 'blur'
+      }),
       email: this.formBuilder.control('',[Validators.required, Validators.pattern(this.emailPattern)]), //sintaxe longa
       emailConfirmation: this.formBuilder.control('',[Validators.required, Validators.pattern(this.emailPattern)]),
       address: this.formBuilder.control('',[Validators.required, Validators.minLength(5)]),
@@ -43,6 +53,13 @@ export class OrderComponent implements OnInit {
       optionalAddress: this.formBuilder.control(''),
       paymentOption: this.formBuilder.control('', [Validators.required])
     }, {validator: OrderComponent.equalsTo})
+    /**
+     * Customizando evednto de validação no form todo
+     */
+    // this.orderform = new FormGroup({
+    //   email: this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
+    //   mailConfirmation: this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)])
+    // }, { validators: [OrderComponent.equalsTo], updateOn: 'blur'})
   }
 
   static equalsTo(group: AbstractControl): {[key:string]: boolean}{
