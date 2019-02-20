@@ -10,8 +10,8 @@ import {CartItem} from '../restaurante-detail/shopping-cart/cart-item.model';
 import {Order, OrderItem} from './order.model';
 import {RANGO_API} from '../app.api';
 
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/operator/map'
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 
 @Injectable()
@@ -40,7 +40,7 @@ export class OrderService {
 
   checkout(order: Order): Observable<string>{
     return this.api.post<Order>(`${RANGO_API}/orders`, order)
-      .map(order => order.id)
+      .pipe(map(order => order.id))
   }
 
   clear(){

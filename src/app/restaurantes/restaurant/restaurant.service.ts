@@ -3,9 +3,8 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Restaurant} from './restaurant.model';
 import {MenuItem} from '../../restaurante-detail/menu-item/menu-item.model';
 import {RANGO_API} from '../../app.api';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import {Observable} from 'rxjs';
+import {map, catchError} from 'rxjs/operators';
 
 
 @Injectable()

@@ -5,6 +5,7 @@ import {RadioOption} from '../shared/radio/radio-option.model';
 import {OrderService} from './order.service';
 import {CartItem} from '../restaurante-detail/shopping-cart/cart-item.model';
 import {Order, OrderItem} from './order.model';
+import {tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-order',
@@ -108,9 +109,11 @@ export class OrderComponent implements OnInit {
       // O operador od aqui guarda o o numero do pedido
       // Assim, o método isOrderCompleted() consegue checar se
       // o usuário completou o pedido
-      .do((orderId: string) => {
-        this.orderId = orderId;
-      })
+      .pipe(
+        tap((orderId: string) => {
+          this.orderId = orderId;
+        })
+      )
       .subscribe((orderId: string) => {
         this.router.navigate(['/order-summary'])
         console.log(`Compra realizada com sucesso. Número do pedido: ${orderId}`);

@@ -1,10 +1,9 @@
-import {Router, NavigationEnd} from '@angular/router'
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { Router, NavigationEnd } from '@angular/router'
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-import {Observable} from 'rxjs/Observable';
-// import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/filter';
+import { Observable } from 'rxjs';
+import { filter, tap } from 'rxjs/operators';
 
 import {RANGO_API} from '../app.api';
 import {User} from './user.model'
@@ -21,7 +20,7 @@ export class LoginService{
     // no método handleLogin(). Isto evita que, se o usuário for
     // para a página de login através do link login, este parâmetro
     // não seja undefined e dê erro 404 =>
-    this.router.events.filter(evt => evt instanceof NavigationEnd)
+    this.router.events.pipe(filter(evt => evt instanceof NavigationEnd))
                       .subscribe( (evt: NavigationEnd) => this.lastUrl = evt.url);
   }
 
@@ -32,7 +31,7 @@ export class LoginService{
   login(email: string, password: string): Observable<User>{
     return this.api.post<User>(`${RANGO_API}/login`, {email: email, password: password})
                     // depois do post, associa o objeto de resposta a propriedade this.user
-                   .do(user => this.user = user);
+                    .pipe(tap(user => this.user = user));
   }
 
   logout(){
